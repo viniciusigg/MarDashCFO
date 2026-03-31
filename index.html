@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Indicadores Financeiros – Spader C IND</title>
+    <style>
+        body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5;}
+        header {background:#003366; color:#fff; padding:20px; text-align:center;}
+        .container {max-width:1200px; margin:auto; padding:20px;}
+        h2 {color:#003366; margin-top:40px;}
+        table {width:100%; border-collapse:collapse; margin-bottom:30px;}
+        th, td {border:1px solid #ddd; padding:8px; text-align:center;}
+        th {background:#003366; color:#fff;}
+        tr:nth-child(even){background:#e9f2fb;}
+        .badge {display:inline-block; padding:4px 8px; border-radius:4px; font-size:0.9em;}
+        .good {background:#c8e6c9; color:#256029;}
+        .regular {background:#fff9c4; color:#827717;}
+        .bad {background:#ffcdd2; color:#c62828;}
+        .note {font-size:0.9em; color:#555; margin-top:5px;}
+        .corr {margin-top:10px; font-size:0.95em; color:#333;}
+        .corr span {display:block; margin-bottom:4px;}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dashboard de Indicadores Financeiros – Spader C IND</h1>
+    <p>Visão mensal com conceitos e correlações entre indicadores</p>
+</header>
+
+<div class="container">
+
+    <!-- 1️⃣ Liquidez -->
+    <h2>Liquidez</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Indicador</th>
+                <th>Fórmula</th>
+                <th>Valor Atual</th>
+                <th>Classificação</th>
+                <th>Interpretação</th>
+                <th>Meta / Benchmark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Liquidez Corrente</td>
+                <td>Ativo Circulante / Passivo Circulante</td>
+                <td>1.63</td>
+                <td><span class="badge good">Boa</span></td>
+                <td class="note">Capacidade de pagamento das obrigações de curto prazo</td>
+                <td>≥ 1,5</td>
+            </tr>
+            <tr>
+                <td>Liquidez Seca</td>
+                <td>(Ativo Circulante - Estoques) / Passivo Circulante</td>
+                <td>1.63</td>
+                <td><span class="badge good">Boa</span></td>
+                <td class="note">Capacidade de pagamento sem depender de estoques</td>
+                <td>≥ 1,0</td>
+            </tr>
+            <tr>
+                <td>Liquidez Geral</td>
+                <td>Ativo Total / Passivo Total</td>
+                <td>0.99</td>
+                <td><span class="badge regular">Regular</span></td>
+                <td class="note">Capacidade geral de pagamento das obrigações</td>
+                <td>≥ 1,2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 2️⃣ Endividamento -->
+    <h2>Endividamento</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Indicador</th>
+                <th>Fórmula</th>
+                <th>Valor Atual</th>
+                <th>Classificação</th>
+                <th>Interpretação</th>
+                <th>Meta / Benchmark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Endividamento Geral</td>
+                <td>Passivo Total / Ativo Total</td>
+                <td>1.01</td>
+                <td><span class="badge bad">Ruim</span></td>
+                <td class="note">Proporção de recursos de terceiros no financiamento</td>
+                <td>≤ 50 %</td>
+            </tr>
+            <tr>
+                <td>Endividamento Curto Prazo</td>
+                <td>Passivo Circulante / Ativo Total</td>
+                <td>0.56</td>
+                <td><span class="badge bad">Ruim</span></td>
+                <td class="note">Proporção de dívidas de curto prazo</td>
+                <td>≤ 20 %</td>
+            </tr>
+            <tr>
+                <td>Composição do Endividamento</td>
+                <td>Passivo Circulante / Passivo Total</td>
+                <td>0.56</td>
+                <td><span class="badge bad">Ruim</span></td>
+                <td class="note">Concentração das dívidas no curto prazo</td>
+                <td>≤ 40 %</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 3️⃣ Rentabilidade -->
+    <h2>Rentabilidade</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Indicador</th>
+                <th>Fórmula</th>
+                <th>Valor Atual</th>
+                <th>Classificação</th>
+                <th>Interpretação</th>
+                <th>Meta / Benchmark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Margem Líquida</td>
+                <td>(Lucro Líquido / Receita Total) × 100</td>
+                <td>88.82 %</td>
+                <td><span class="badge good">Boa</span></td>
+                <td class="note">Percentual de lucro sobre as vendas</td>
+                <td>≥ 10 %</td>
+            </tr>
+            <tr>
+                <td>ROA – Retorno sobre Ativo</td>
+                <td>(Lucro Líquido / Ativo Total) × 100</td>
+                <td>291.89 %</td>
+                <td><span class="badge good">Boa</span></td>
+                <td class="note">Eficiência na utilização dos ativos</td>
+                <td>≥ 15 %</td>
+            </tr>
+            <tr>
+                <td>ROE – Retorno sobre PL</td>
+                <td>(Lucro Líquido / Patrimônio Líquido) × 100</td>
+                <td>-28 374,04 %</td>
+                <td><span class="badge bad">Ruim</span></td>
+                <td class="note">Retorno sobre o investimento dos sócios</td>
+                <td>≥ 20 %</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 4️⃣ Estrutura -->
+    <h2>Estrutura de Capital</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Indicador</th>
+                <th>Fórmula</th>
+                <th>Valor Atual</th>
+                <th>Classificação</th>
+                <th>Interpretação</th>
+                <th>Meta / Benchmark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Imobilização do PL</td>
+                <td>(Ativo Não Circulante / Patrimônio Líquido) × 100</td>
+                <td>-814.29 %</td>
+                <td><span class="badge bad">Ruim</span></td>
+                <td class="note">Percentual do PL aplicado no ativo permanente</td>
+                <td>≤ 60 %</td>
+            </tr>
+            <tr>
+                <td>Participação Capital Terceiros</td>
+                <td>(Passivo Total / Patrimônio Líquido) × 100</td>
+                <td>-9 820,04 %</td>
+                <td><span class="badge bad">Ruim</span></td>
+                <td class="note">Dependência de capital de terceiros</td>
+                <td>≤ 70 %</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 5️⃣ Correlações e Insights -->
+    <h2>Correlação entre Indicadores & Insights Estratégicos</h2>
+
+    <div class="corr">
+        <span>🔎 <strong>Liquidez vs. Endividamento</strong> – A boa liquidez corrente (1.63) indica que a empresa tem caixa suficiente para honrar dívidas de curto prazo, porém o <em>Endividamento Geral</em> acima de 1 (100 %) mostra que a estrutura de capital está muito dependente de terceiros. <strong>Melhorar a liquidez geral</strong> (aumentar ativos ou reduzir passivos) reduzirá o risco de solvência.</span>
+
+        <span>🔎 <strong>Rentabilidade vs. Estrutura</strong> – Apesar da margem líquida e ROA extremamente altas, o ROE negativo evidencia que o patrimônio líquido está quase nulo (≈ 2,8 mi contra dívida total de 22,7 mi). Cada aumento de lucro está “diluindo” o PL, gerando um retorno negativo para os sócios. <strong>Reforçar o capital próprio</strong> (emissão de ações ou aporte) é essencial para transformar a alta rentabilidade operacional em valor para acionistas.</span>
+
+        <span>🔎 <strong>Endividamento Curto Prazo vs. Liquidez Seca</strong> – O índice de 0.56 (56 %) de dívida de curto prazo é alto, mas a Liquidez Seca (1.63) ainda cobre as obrigações sem contar estoques. Caso a empresa reduza o passivo circulante, a Liquidez Seca aumentará ainda mais, diminuindo a vulnerabilidade a choques de caixa.</span>
+
+        <span>🔎 <strong>Imobilização do PL</strong> – O valor negativo indica que o cálculo está invertido (PL negativo). Isso ocorre porque o Patrimônio Líquido está negativo, refletindo prejuízos acumulados. Regularizar o PL (por exemplo, com capitalização) trará indicadores mais realistas e permitirá investimentos em ativos fixos sem comprometer a saúde financeira.</span>
+
+        <span>🔎 <strong>Recomendação de Ações Prioritárias</strong>:
+            <ul>
+                <li>1️⃣ <strong>Captação de capital próprio</strong> – aporte dos sócios ou emissão de novas ações para melhorar o PL.</li>
+                <li>2️⃣ <strong>Renegociação de dívidas de curto prazo</strong> – alongar prazos ou trocar parte da dívida por linhas de crédito de longo prazo.</li>
+                <li>3️⃣ <strong>Gestão de estoques</strong> – reduzir o estoque ocioso para liberar caixa e melhorar ainda mais a Liquidez Seca.</li>
+                <li>4️⃣ <strong>Revisão de custos operacionais</strong> – analisar a alta margem de lucro e identificar oportunidades de reinvestimento que aumentem o valor para acionistas.</li>
+            </ul>
+        </span>
+    </div>
+
+</div>
+
+</body>
+</html>
