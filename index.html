@@ -20,10 +20,10 @@
             overflow: hidden; /* Remove o scroll */
         }
         .container {
-            width: 95vw; /* Largura responsiva para TV */
-            height: 95vh; /* Altura responsiva para TV */
+            width: 98vw; /* Largura responsiva para TV, um pouco mais ampla */
+            height: 98vh; /* Altura responsiva para TV, um pouco mais alta */
             background-color: #34495e; /* Azul médio para o container */
-            padding: 20px;
+            padding: 15px; /* Padding reduzido */
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             display: flex;
@@ -33,35 +33,35 @@
         h1 {
             text-align: center;
             color: #e0e0e0;
-            margin-bottom: 15px;
-            font-size: 2.5em; /* Ajustado para TV */
+            margin-bottom: 10px; /* Margem reduzida */
+            font-size: 2.2em; /* Ajustado para TV */
             font-weight: 700;
             letter-spacing: 1px;
         }
         .month-selector {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Margem reduzida */
         }
         .month-selector label {
-            font-size: 1.2em;
-            margin-right: 10px;
+            font-size: 1.1em; /* Tamanho da fonte ajustado */
+            margin-right: 8px;
             color: #bdc3c7;
             font-weight: 500;
         }
         .month-selector select {
-            padding: 8px 15px;
+            padding: 6px 12px; /* Padding reduzido */
             border: 1px solid #555;
             border-radius: 8px;
-            font-size: 1.1em;
+            font-size: 1em; /* Tamanho da fonte ajustado */
             background-color: #4a627a;
             color: #ecf0f1;
             cursor: pointer;
             transition: border-color 0.3s ease, background-color 0.3s ease;
-            appearance: none; /* Remove estilo padrão do select */
+            appearance: none;
             background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ecf0f1%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-6.5%200-12.1%203.2-15.1%208.5-2.9%205.4-1.7%2012%203.4%2016.2l133.6%20134.4a17.6%2017.6%200%200%200%2025.3%200l133.6-134.4c5.2-4.2%206.3-10.8%203.4-16.2z%22%2F%3E%3C%2Fsvg%3E');
             background-repeat: no-repeat;
-            background-position: right 10px top 50%;
-            background-size: 12px auto;
+            background-position: right 8px top 50%;
+            background-size: 10px auto;
         }
         .month-selector select:focus {
             border-color: #3498db;
@@ -69,60 +69,66 @@
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
         }
         .dashboard-grid {
-            flex-grow: 1; /* Permite que a grid ocupe o espaço restante */
+            flex-grow: 1;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustado para 3 colunas */
-            gap: 20px;
-            overflow: hidden; /* Garante que não haja scroll dentro da grid */
-            padding-bottom: 10px; /* Pequeno padding para evitar corte */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Mais colunas, cards menores */
+            gap: 15px; /* Espaçamento reduzido */
+            overflow: hidden;
+            padding-bottom: 5px;
         }
         .indicator-card {
-            background-color: #4a627a; /* Azul mais claro para os cards */
+            background-color: #4a627a;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            padding: 15px;
+            padding: 12px; /* Padding reduzido */
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             border: 1px solid #5d7a96;
-            height: 100%; /* Garante que os cards ocupem a altura disponível */
+            height: 100%;
             box-sizing: border-box;
         }
         .indicator-card h3 {
-            margin-top: 10px;
-            margin-bottom: 5px;
+            margin-top: 8px;
+            margin-bottom: 3px;
             color: #ecf0f1;
-            font-size: 1.2em;
+            font-size: 1.1em; /* Tamanho da fonte ajustado */
             font-weight: 600;
+            line-height: 1.2; /* Ajuste para caber em menos linhas */
         }
         .indicator-value {
-            font-size: 1.6em;
+            font-size: 1.4em; /* Tamanho da fonte ajustado */
             font-weight: bold;
-            color: #3498db; /* Azul vibrante para o valor */
-            margin-bottom: 5px;
-        }
-        .indicator-classification {
-            font-size: 0.9em;
-            color: #bdc3c7;
+            color: #3498db;
             margin-bottom: 3px;
         }
+        .indicator-classification {
+            font-size: 0.8em; /* Tamanho da fonte ajustado */
+            color: #bdc3c7;
+            margin-bottom: 2px;
+        }
         .indicator-interpretation {
-            font-size: 0.8em;
+            font-size: 0.7em; /* Tamanho da fonte ajustado */
             color: #95a5a6;
-            line-height: 1.3;
-            min-height: 30px; /* Para manter o layout consistente */
+            line-height: 1.2;
+            min-height: 25px; /* Altura mínima para consistência */
+            overflow: hidden; /* Esconde texto extra se não couber */
+            text-overflow: ellipsis; /* Adiciona reticências */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limita a 2 linhas */
+            -webkit-box-orient: vertical;
         }
         .indicator-benchmark {
-            font-size: 0.85em;
+            font-size: 0.75em; /* Tamanho da fonte ajustado */
             color: #7f8c8d;
-            margin-top: 5px;
+            margin-top: 3px;
         }
         .donut-chart-container {
             position: relative;
-            width: 90px; /* Tamanho do donut ajustado */
-            height: 90px;
-            margin-bottom: 10px;
+            width: 70px; /* Tamanho do donut reduzido */
+            height: 70px;
+            margin-bottom: 8px;
         }
         .donut-chart {
             width: 100%;
@@ -131,12 +137,12 @@
             background: conic-gradient(
                 var(--color-part1) 0% var(--angle-part1),
                 var(--color-part2) var(--angle-part1) var(--angle-part2),
-                #5d7a96 var(--angle-part2) 100% /* Cor de fundo do donut */
+                #5d7a96 var(--angle-part2) 100%
             );
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1em;
+            font-size: 0.9em; /* Tamanho da fonte ajustado */
             font-weight: bold;
             color: #ecf0f1;
         }
@@ -145,29 +151,29 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px; /* Tamanho do buraco do donut */
-            height: 60px;
-            background-color: #34495e; /* Cor do centro do donut */
+            width: 45px; /* Tamanho do buraco do donut reduzido */
+            height: 45px;
+            background-color: #34495e;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8em;
+            font-size: 0.7em; /* Tamanho da fonte ajustado */
             font-weight: 600;
             color: #ecf0f1;
             z-index: 2;
         }
         .category-title {
-            grid-column: 1 / -1; /* Ocupa todas as colunas */
+            grid-column: 1 / -1;
             text-align: left;
             color: #e0e0e0;
-            font-size: 1.8em;
+            font-size: 1.6em; /* Tamanho da fonte ajustado */
             font-weight: 600;
-            margin-top: 20px;
-            margin-bottom: 15px;
-            padding-left: 10px;
+            margin-top: 15px; /* Margem reduzida */
+            margin-bottom: 10px; /* Margem reduzida */
+            padding-left: 8px;
             border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
         }
         .alert-message {
             grid-column: 1 / -1;
@@ -207,398 +213,409 @@
         const allMonthsData = {
             "Jan": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.93, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.37, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.73, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.28, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "A empresa tem pouca capacidade de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.93, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.37, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.73, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.28, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 79.6, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 39.6, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: 4.2, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "O EBITDA baixo pode indicar que a empresa não está gerando caixa suficiente de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.58, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "A margem líquida baixa sugere que a empresa tem pouca lucratividade após todos os custos e impostos." }
+                    { Indicador: "Margem Bruta", ValorAtual: 79.6, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 39.6, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão." },
+                    { Indicador: "EBITDA", ValorAtual: 4.2, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.58, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: 11.08, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Regular", Interpretação: "O ROE indica um retorno razoável sobre o capital próprio, mas com espaço para melhoria." },
-                    { Indicador: "ROA", ValorAtual: 105.32, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Regular", Interpretação: "O ROA indica que a empresa está gerando um bom lucro a partir de seus ativos, mas pode ser mais eficiente." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 291.89, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -28374.04, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 44.02, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 98.40, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 107.91, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 64.79, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.01, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.56, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.56, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -9820.04, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 40.64, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 12.11, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 55.85, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -3.11, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo é excelente, a empresa recebe antes de pagar." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 52.74, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.41, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: -115.84, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "O giro de caixa negativo indica que a empresa está usando caixa para financiar suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7639.05, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -814.29, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 45.16, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 55.85, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 12.11, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -3.11, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 52.74, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.41, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -115.84, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7792.48, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 151.97, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 347.02, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 347.02, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Fev": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.44, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.74, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.26, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "A empresa tem pouca capacidade de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.44, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.76, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.25, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 81.6, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 46.0, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: 2.4, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "O EBITDA baixo pode indicar que a empresa não está gerando caixa suficiente de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 1.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "A margem líquida baixa sugere que a empresa tem pouca lucratividade após todos os custos e impostos." }
+                    { Indicador: "Margem Bruta", ValorAtual: 78.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 38.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão." },
+                    { Indicador: "EBITDA", ValorAtual: 4.0, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.40, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: 3.66, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "O ROE baixo indica um retorno insatisfatório sobre o capital próprio." },
-                    { Indicador: "ROA", ValorAtual: 38.22, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Ruim", Interpretação: "O ROA baixo indica que a empresa não está gerando lucro suficiente a partir de seus ativos." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 280.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -27000.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 43.89, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 97.67, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 108.12, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 61.35, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.02, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.58, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.58, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -9900.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 44.58, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 13.98, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 39.69, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 18.87, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 58.56, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.37, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 19.08, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7799.35, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -820.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 46.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 56.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 13.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -3.00, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 53.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.40, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -110.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7437.02, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 201.28, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 271.64, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 271.64, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Mar": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.44, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.78, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.30, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "A empresa tem pouca capacidade de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.44, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.75, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.23, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 83.2, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 36.1, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: 2.7, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "O EBITDA baixo pode indicar que a empresa não está gerando caixa suficiente de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.16, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "A margem líquida baixa sugere que a empresa tem pouca lucratividade após todos os custos e impostos." }
+                    { Indicador: "Margem Bruta", ValorAtual: 77.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 37.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão." },
+                    { Indicador: "EBITDA", ValorAtual: 3.8, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.30, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: 7.14, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "O ROE baixo indica um retorno insatisfatório sobre o capital próprio." },
-                    { Indicador: "ROA", ValorAtual: 75.05, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Regular", Interpretação: "O ROA indica que a empresa está gerando um bom lucro a partir de seus ativos, mas pode ser mais eficiente." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 275.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -26500.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 43.73, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 97.70, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 108.21, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 61.19, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.03, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.59, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.59, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -9950.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 47.27, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 13.34, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 42.52, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 18.09, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 60.61, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.35, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 19.90, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7792.48, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -825.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 47.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 57.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 14.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.90, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 54.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.39, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -105.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 6883.90, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 161.17, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 225.58, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 225.58, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Abr": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.46, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.69, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.29, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "A empresa tem pouca capacidade de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.46, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.74, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.21, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 82.6, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 33.7, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Regular", Interpretação: "Margem operacional razoável, próxima da meta." },
-                    { Indicador: "EBITDA", ValorAtual: -1.2, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA negativo, indicando que a empresa não está gerando caixa de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: -0.59, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida negativa, a empresa está operando com prejuízo." }
+                    { Indicador: "Margem Bruta", ValorAtual: 76.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 37.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão." },
+                    { Indicador: "EBITDA", ValorAtual: 3.6, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.20, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: -1.68, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "ROE negativo, a empresa está destruindo valor para os acionistas." },
-                    { Indicador: "ROA", ValorAtual: -18.63, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Ruim", Interpretação: "ROA negativo, a empresa não está gerando lucro a partir de seus ativos." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 270.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -26000.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 56.37, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 97.76, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 108.85, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 59.12, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.04, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.60, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.60, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -10000.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 57.56, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 13.20, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 37.32, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 33.44, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 70.77, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.31, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 10.76, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7437.02, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -830.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 48.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 58.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 15.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.80, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 55.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.38, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -100.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 6619.84, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 183.16, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 136.24, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 136.24, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Maio": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.90, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.52, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.62, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.13, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "A empresa tem pouca capacidade de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.90, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.52, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.72, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.19, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 80.0, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 22.4, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Regular", Interpretação: "Margem operacional razoável, mas abaixo da meta ideal." },
-                    { Indicador: "EBITDA", ValorAtual: -1.6, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA negativo, indicando que a empresa não está gerando caixa de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: -2.62, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida negativa, a empresa está operando com prejuízo." }
+                    { Indicador: "Margem Bruta", ValorAtual: 75.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 36.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão." },
+                    { Indicador: "EBITDA", ValorAtual: 3.4, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.10, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: -7.06, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "ROE negativo, a empresa está destruindo valor para os acionistas." },
-                    { Indicador: "ROA", ValorAtual: -90.30, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Ruim", Interpretação: "ROA negativo, a empresa não está gerando lucro a partir de seus ativos." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 265.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -25500.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 69.10, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 98.32, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 111.11, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 53.81, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.05, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.61, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.61, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -10050.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 58.82, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 13.69, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 33.51, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 39.00, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 72.51, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.32, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 9.23, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 6619.84, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -835.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 49.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 59.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 16.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.70, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 56.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.37, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -95.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 6619.84, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 158.36, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 81.93, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 81.93, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Jun": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.88, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.56, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.72, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.12, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "A empresa tem pouca capacidade de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.88, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.56, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.70, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.17, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 80.0, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 43.0, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: -2.8, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA negativo, indicando que a empresa não está gerando caixa de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: -4.15, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida negativa, a empresa está operando com prejuízo." }
+                    { Indicador: "Margem Bruta", ValorAtual: 74.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 36.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão." },
+                    { Indicador: "EBITDA", ValorAtual: 3.2, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: -9.89, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "ROE negativo, a empresa está destruindo valor para os acionistas." },
-                    { Indicador: "ROA", ValorAtual: -136.26, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Ruim", Interpretação: "ROA negativo, a empresa não está gerando lucro a partir de seus ativos." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 260.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -25000.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 68.70, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 99.55, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 113.33, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 51.18, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.06, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.62, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.62, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -10100.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 53.08, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 15.97, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 43.02, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 26.04, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 69.05, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.32, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 13.83, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 6619.84, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -840.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 50.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 60.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 17.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.60, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 57.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.36, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -90.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7968.18, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 236.35, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 99.22, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 99.22, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Jul": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.88, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.63, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 1.00, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Regular", Interpretação: "A empresa está no limite para cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.44, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Regular", Interpretação: "A empresa tem capacidade razoável de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.88, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.63, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.71, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.18, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 83.6, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 52.2, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Excelente margem operacional, indicando alta eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: -0.2, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA negativo, indicando que a empresa não está gerando caixa de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: -4.06, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida negativa, a empresa está operando com prejuízo." }
+                    { Indicador: "Margem Bruta", ValorAtual: 73.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 35.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão." },
+                    { Indicador: "EBITDA", ValorAtual: 3.1, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 1.90, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: -11.49, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "ROE negativo, a empresa está destruindo valor para os acionistas." },
-                    { Indicador: "ROA", ValorAtual: -143.42, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Ruim", Interpretação: "ROA negativo, a empresa não está gerando lucro a partir de seus ativos." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 255.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -24500.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 67.11, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 101.03, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 113.51, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 49.47, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Boa", Interpretação: "A maior parte do endividamento é de curto prazo, mas está dentro da meta." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.07, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.63, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.63, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -10150.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 36.85, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 13.90, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 31.52, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 19.22, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 50.75, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.37, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 18.73, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7968.18, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -845.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 51.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 61.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 18.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.50, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 58.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.35, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -85.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 8391.03, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 232.80, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 248.69, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 248.69, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Ago": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.91, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.54, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 1.04, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Boa", Interpretação: "A empresa tem boa capacidade de cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.56, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Boa", Interpretação: "A empresa tem boa capacidade de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.91, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.54, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.72, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.19, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 80.2, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 49.4, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Excelente margem operacional, indicando alta eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: 3.5, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "O EBITDA baixo pode indicar que a empresa não está gerando caixa suficiente de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 1.29, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "A margem líquida baixa sugere que a empresa tem pouca lucratividade após todos os custos e impostos." }
+                    { Indicador: "Margem Bruta", ValorAtual: 73.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 35.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Boa margem operacional, indicando eficiência na gestão." },
+                    { Indicador: "EBITDA", ValorAtual: 3.0, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 1.80, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: 3.73, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "O ROE baixo indica um retorno insatisfatório sobre o capital próprio." },
-                    { Indicador: "ROA", ValorAtual: 40.53, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Ruim", Interpretação: "O ROA baixo indica que a empresa não está gerando lucro suficiente a partir de seus ativos." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 250.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -24000.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 66.81, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 99.30, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 110.16, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 54.67, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.08, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.64, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.64, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -10200.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 36.10, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 14.98, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 37.89, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 13.18, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 51.07, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.34, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 27.31, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 8391.03, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -850.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 52.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 62.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 19.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.40, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 59.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.34, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -80.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7822.26, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 203.07, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 206.52, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 206.52, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Set": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.90, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.41, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.99, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Regular", Interpretação: "A empresa está no limite para cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.60, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Boa", Interpretação: "A empresa tem boa capacidade de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.90, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.41, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.70, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.17, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 82.3, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 59.9, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Excelente margem operacional, indicando alta eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: 4.2, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "O EBITDA baixo pode indicar que a empresa não está gerando caixa suficiente de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.85, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "A margem líquida baixa sugere que a empresa tem pouca lucratividade após todos os custos e impostos." }
+                    { Indicador: "Margem Bruta", ValorAtual: 72.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 34.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Regular", Interpretação: "Margem operacional razoável, mas pode ser melhorada." },
+                    { Indicador: "EBITDA", ValorAtual: 2.9, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 1.70, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: 8.04, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "O ROE baixo indica um retorno insatisfatório sobre o capital próprio." },
-                    { Indicador: "ROA", ValorAtual: 96.59, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Regular", Interpretação: "O ROA indica que a empresa está gerando um bom lucro a partir de seus ativos, mas pode ser mais eficiente." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 245.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -23500.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 57.51, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 98.60, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 110.60, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 59.73, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.09, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.65, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.65, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -10250.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 31.13, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 12.79, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 38.01, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 5.91, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 43.92, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.36, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 60.93, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7822.26, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -855.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 53.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 63.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 20.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.30, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 60.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.33, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -75.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7876.93, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 234.43, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 162.26, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 162.26, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Out": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.39, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.88, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.49, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Regular", Interpretação: "A empresa tem capacidade razoável de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.39, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.71, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.18, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 80.1, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 54.3, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Excelente margem operacional, indicando alta eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: 3.3, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "O EBITDA baixo pode indicar que a empresa não está gerando caixa suficiente de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 1.98, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "A margem líquida baixa sugere que a empresa tem pouca lucratividade após todos os custos e impostos." }
+                    { Indicador: "Margem Bruta", ValorAtual: 72.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 34.0, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Regular", Interpretação: "Margem operacional razoável, mas pode ser melhorada." },
+                    { Indicador: "EBITDA", ValorAtual: 2.8, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 1.60, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: 6.03, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "O ROE baixo indica um retorno insatisfatório sobre o capital próprio." },
-                    { Indicador: "ROA", ValorAtual: 69.82, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Ruim", Interpretação: "O ROA baixo indica que a empresa não está gerando lucro suficiente a partir de seus ativos." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 240.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -23000.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 59.35, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 97.59, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 109.16, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 61.29, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.10, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.66, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.66, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -10300.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 36.89, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 11.60, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 31.73, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 16.75, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 48.49, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.36, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 21.49, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7876.93, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -860.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 54.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 64.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 21.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.20, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 61.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.32, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -70.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 7876.93, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 196.46, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 225.10, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 225.10, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             },
             "Nov": {
                 "Liquidez": [
-                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto e longo prazo." },
-                    { Indicador: "Liquidez Corrente", ValorAtual: 1.43, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "A empresa pode ter alguma dificuldade em cumprir obrigações de curto prazo." },
-                    { Indicador: "Líquidez Seca", ValorAtual: 0.92, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "A empresa pode ter dificuldades em cumprir obrigações de curto prazo sem depender do estoque." },
-                    { Indicador: "Liquidez Imediata", ValorAtual: 0.45, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Regular", Interpretação: "A empresa tem capacidade razoável de pagar dívidas imediatas com o que tem em caixa." }
+                    { Indicador: "Liquidez Geral", ValorAtual: 0.92, Meta: 1.5, Benchmark: "Ideal: > 1.5", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto e longo prazo." },
+                    { Indicador: "Liquidez Corrente", ValorAtual: 1.43, Meta: 2.0, Benchmark: "Ideal: > 2.0", Classificacao: "Regular", Interpretação: "Alguma dificuldade em cumprir obrigações de curto prazo." },
+                    { Indicador: "Líquidez Seca", ValorAtual: 0.70, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Dificuldade em cumprir obrigações de curto prazo sem estoque." },
+                    { Indicador: "Liquidez Imediata", ValorAtual: 0.17, Meta: 0.5, Benchmark: "Ideal: > 0.5", Classificacao: "Ruim", Interpretação: "Pouca capacidade de pagar dívidas imediatas com caixa." }
                 ],
                 "Lucratividade": [
-                    { Indicador: "Margem Bruta", ValorAtual: 78.1, Meta: 35.0, Benchmark: "Distribuição Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas após custos diretos." },
-                    { Indicador: "Margem Operacional", ValorAtual: 55.0, Meta: 35.0, Benchmark: "Distribuição Alimentos: 15-35%", Classificacao: "Boa", Interpretação: "Excelente margem operacional, indicando alta eficiência na gestão das operações." },
-                    { Indicador: "EBITDA", ValorAtual: 4.1, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "O EBITDA baixo pode indicar que a empresa não está gerando caixa suficiente de suas operações principais." },
-                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 2.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "A margem líquida baixa sugere que a empresa tem pouca lucratividade após todos os custos e impostos." }
+                    { Indicador: "Margem Bruta", ValorAtual: 71.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 20-35%", Classificacao: "Boa", Interpretação: "Alta margem bruta indica boa rentabilidade sobre as vendas." },
+                    { Indicador: "Margem Operacional", ValorAtual: 33.5, Meta: 35.0, Benchmark: "Dist. Alimentos: 15-35%", Classificacao: "Regular", Interpretação: "Margem operacional razoável, mas pode ser melhorada." },
+                    { Indicador: "EBITDA", ValorAtual: 2.7, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Ruim", Interpretação: "EBITDA baixo pode indicar geração de caixa insuficiente." },
+                    { Indicador: "Margem Líquida s/ Vendas", ValorAtual: 1.50, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Margem líquida baixa sugere pouca lucratividade após custos." }
                 ],
                 "Rentabilidade": [
-                    { Indicador: "ROE", ValorAtual: 6.01, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "O ROE baixo indica um retorno insatisfatório sobre o capital próprio." },
-                    { Indicador: "ROA", ValorAtual: 72.04, Meta: 150.0, Benchmark: "Ideal: > 150%", Classificacao: "Ruim", Interpretação: "O ROA baixo indica que a empresa não está gerando lucro suficiente a partir de seus ativos." }
+                    { Indicador: "ROA - Retorno sobre Ativo", ValorAtual: 235.00, Meta: 15.0, Benchmark: "Ideal: > 15%", Classificacao: "Boa", Interpretação: "Eficiência na utilização dos ativos para gerar lucro." },
+                    { Indicador: "ROE - Retorno sobre PL", ValorAtual: -22500.00, Meta: 20.0, Benchmark: "Ideal: > 20%", Classificacao: "Ruim", Interpretação: "Retorno negativo sobre o investimento dos sócios." }
                 ],
-                "Estrutura": [
-                    { Indicador: "Imobilização do Capital Proprio", ValorAtual: 62.00, Meta: 100.0, Benchmark: "Ideal: < 100%", Classificacao: "Boa", Interpretação: "Boa imobilização, indicando que o capital próprio cobre os ativos fixos." },
-                    { Indicador: "Endividamento Geral", ValorAtual: 96.42, Meta: 70.0, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Alto endividamento geral, a empresa depende muito de capital de terceiros." },
-                    { Indicador: "PCT - Participação de Capitais de Terceiros", ValorAtual: 108.41, Meta: 125.0, Benchmark: "Ideal: < 125%", Classificacao: "Boa", Interpretação: "A participação de capitais de terceiros está dentro de um limite aceitável." },
-                    { Indicador: "CE - Composição do Endividamento", ValorAtual: 59.61, Meta: 50.0, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "A maior parte do endividamento é de curto prazo, o que pode gerar pressão de caixa." }
+                "Endividamento": [
+                    { Indicador: "Endividamento Geral", ValorAtual: 1.11, Meta: 0.5, Benchmark: "Ideal: ≤ 50%", Classificacao: "Ruim", Interpretação: "Alta proporção de recursos de terceiros no financiamento." },
+                    { Indicador: "Endividamento Curto Prazo", ValorAtual: 0.67, Meta: 0.2, Benchmark: "Ideal: ≤ 20%", Classificacao: "Ruim", Interpretação: "Alta proporção de dívidas de curto prazo." },
+                    { Indicador: "Composição do Endividamento", ValorAtual: 0.67, Meta: 0.4, Benchmark: "Ideal: ≤ 40%", Classificacao: "Ruim", Interpretação: "Concentração das dívidas no curto prazo." },
+                    { Indicador: "Participação Capital Terceiros", ValorAtual: -10350.00, Meta: 0.7, Benchmark: "Ideal: ≤ 70%", Classificacao: "Ruim", Interpretação: "Dependência excessiva de capital de terceiros." }
                 ],
-                "Atividade": [
-                    { Indicador: "PME", ValorAtual: 33.02, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "O prazo médio de estocagem é alto, indicando capital parado em estoque." },
-                    { Indicador: "PMR", ValorAtual: 15.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Boa", Interpretação: "Bom prazo médio de recebimento, indicando eficiência na cobrança." },
-                    { Indicador: "PMP", ValorAtual: 41.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Regular", Interpretação: "O prazo médio de pagamento é razoável, mas pode ser estendido para melhorar o fluxo de caixa." },
-                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: 7.02, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Ruim", Interpretação: "Ciclo financeiro positivo, a empresa paga antes de receber." },
-                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 48.02, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente, o tempo entre a compra e o recebimento é adequado." },
-                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.36, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "O giro do ativo é baixo, indicando que os ativos não estão gerando vendas de forma eficiente." },
-                    { Indicador: "Giro de Caixa", ValorAtual: 51.28, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Giro de caixa positivo, indicando que a empresa está gerando caixa de suas operações." },
-                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 8104.12, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável, a empresa tem recursos para operar." },
+                "Estrutura e Atividade": [
+                    { Indicador: "Imobilização do PL", ValorAtual: -865.00, Meta: 0.6, Benchmark: "Ideal: ≤ 60%", Classificacao: "Ruim", Interpretação: "Percentual do PL aplicado no ativo permanente é negativo." },
+                    { Indicador: "PME - Prazo Médio de Estoque", ValorAtual: 55.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Estoque permanece muito tempo na empresa." },
+                    { Indicador: "PMR - Prazo Médio de Recebimento", ValorAtual: 65.00, Meta: 30.0, Benchmark: "Ideal: < 30 dias", Classificacao: "Ruim", Interpretação: "Prazo médio de recebimento é longo." },
+                    { Indicador: "PMP - Prazo Médio de Pagamento", ValorAtual: 22.00, Meta: 65.0, Benchmark: "Ideal: > 65 dias", Classificacao: "Ruim", Interpretação: "A empresa paga seus fornecedores muito rapidamente." },
+                    { Indicador: "CF - Ciclo Financeiro", ValorAtual: -2.10, Meta: 0.0, Benchmark: "Ideal: < 0 dias", Classificacao: "Boa", Interpretação: "Ciclo financeiro negativo, a empresa recebe antes de pagar." },
+                    { Indicador: "CO - Ciclo Operacional", ValorAtual: 62.00, Meta: 80.0, Benchmark: "Ideal: < 80 dias", Classificacao: "Boa", Interpretação: "Ciclo operacional eficiente." },
+                    { Indicador: "Giro do Ativo (GA)", ValorAtual: 0.31, Meta: 1.0, Benchmark: "Ideal: > 1.0", Classificacao: "Ruim", Interpretação: "Giro do ativo baixo, ativos não geram vendas eficientemente." },
+                    { Indicador: "Giro de Caixa", ValorAtual: -65.00, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Ruim", Interpretação: "Giro de caixa negativo, a empresa não está gerando caixa." },
+                    { Indicador: "CDG - Capital de Giro Líquido (em milhares)", ValorAtual: 8104.12, Meta: 5000.0, Benchmark: "Ideal: > 5000", Classificacao: "Boa", Interpretação: "Capital de giro líquido saudável." },
                     { Indicador: "NCG (em milhares)", ValorAtual: 306.71, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Necessidade de Capital de Giro positiva, mas gerenciável." },
-                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 169.24, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo, indicando boa gestão de caixa." }
+                    { Indicador: "Saldo de Tesouraria ST (em milhares)", ValorAtual: 169.24, Meta: 0.0, Benchmark: "Ideal: > 0", Classificacao: "Boa", Interpretação: "Saldo de tesouraria positivo." }
                 ]
             }
         };
@@ -611,31 +628,21 @@
 
         function createDonutChart(value, meta, classification, label, isLowerBetter) {
             let percentage = 0;
-            let color = colorNeutral;
+            let color = getClassificationColor(classification);
 
-            // Lógica de preenchimento do donut e cor baseada na classificação
-            if (classification === "Boa") {
-                color = colorGood;
-            } else if (classification === "Regular") {
-                color = colorRegular;
-            } else if (classification === "Ruim") {
-                color = colorBad;
-            }
-
-            // Cálculo da porcentagem para o donut
+            // Lógica de preenchimento do donut
             if (meta === 0) { // Evita divisão por zero
                 percentage = value > 0 ? 100 : 0;
             } else if (isLowerBetter) { // Menor é melhor (ex: Endividamento)
                 if (value <= meta) { // Se o valor é menor ou igual à meta (bom)
-                    percentage = 100; // Preenche 100% com a cor da classificação
+                    percentage = 100;
                 } else { // Se o valor é maior que a meta (ruim)
-                    // Calcula o quão "ruim" ele está em relação à meta, para preencher o donut
-                    // Pode ser uma lógica inversa ou simplesmente um percentual fixo para "ruim"
+                    // Quanto mais longe da meta (pior), menor o preenchimento
                     percentage = Math.max(0, 100 - ((value - meta) / meta) * 100);
                 }
             } else { // Maior é melhor (ex: Lucratividade)
                 if (value >= meta) { // Se o valor é maior ou igual à meta (bom)
-                    percentage = 100; // Preenche 100% com a cor da classificação
+                    percentage = 100;
                 } else { // Se o valor é menor que a meta (ruim)
                     percentage = (value / meta) * 100;
                 }
@@ -686,12 +693,12 @@
                         let isLowerBetter = false; // Flag para indicadores onde menor é melhor
 
                         // Determinar se o indicador é "menor é melhor"
-                        if (indicator.Interpretação.includes('menor é melhor') || indicator.Indicador.includes('Endividamento') || indicator.Indicador.includes('Imobilização') || indicator.Indicador.includes('Participação Capital Terceiros') || indicator.Indicador.includes('PME') || indicator.Indicador.includes('PMR') || indicator.Indicador.includes('CF - Ciclo Financeiro') || indicator.Indicador.includes('CO - Ciclo Operacional')) {
+                        if (indicator.Interpretação.includes('menor é melhor') || indicator.Indicador.includes('Endividamento') || indicator.Indicador.includes('Imobilização') || indicator.Indicador.includes('Participação Capital Terceiros') || indicator.Indicador.includes('PME') || indicator.Indicador.includes('PMR') || indicator.Indicador.includes('CF - Ciclo Financeiro') || indicator.Indicador.includes('CO - Ciclo Operacional') || indicator.Indicador.includes('PMP')) {
                             isLowerBetter = true;
                         }
 
                         // Formatação do valor
-                        if (indicator.Indicador.includes('Margem') || indicator.Indicador.includes('ROE') || indicator.Indicador.includes('ROA') || indicator.Indicador.includes('Imobilização') || indicator.Indicador.includes('Participação') || indicator.Indicador.includes('EBITDA') || indicator.Indicador.includes('Endividamento Geral') || indicator.Indicador.includes('CE - Composição do Endividamento')) {
+                        if (indicator.Indicador.includes('Margem') || indicator.Indicador.includes('ROE') || indicator.Indicador.includes('ROA') || indicator.Indicador.includes('Imobilização') || indicator.Indicador.includes('Participação') || indicator.Indicador.includes('EBITDA') || indicator.Indicador.includes('Endividamento Geral') || indicator.Indicador.includes('CE - Composição do Endividamento') || indicator.Indicador.includes('Composição do Endividamento')) {
                             formattedValue = `${indicator.ValorAtual.toFixed(2)}%`;
                         } else if (indicator.Indicador.includes('Ciclo') || indicator.Indicador.includes('PME') || indicator.Indicador.includes('PMR') || indicator.Indicador.includes('PMP')) {
                             formattedValue = `${indicator.ValorAtual.toFixed(0)} dias`;
@@ -701,8 +708,7 @@
                             formattedValue = indicator.ValorAtual.toFixed(2);
                         }
 
-                        // Lógica para determinar a cor do donut e classificação
-                        let classificationText = indicator.Classificacao; // Usa a classificação do dado
+                        const classificationText = indicator.Classificacao;
 
                         card.innerHTML = `
                             ${createDonutChart(indicator.ValorAtual, indicator.Meta, classificationText, formattedValue, isLowerBetter)}
