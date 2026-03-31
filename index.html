@@ -2,213 +2,969 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard de Indicadores Financeiros – Spader C IND</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Indicadores Financeiros - Spader C Ind</title>
     <style>
-        body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5;}
-        header {background:#003366; color:#fff; padding:20px; text-align:center;}
-        .container {max-width:1200px; margin:auto; padding:20px;}
-        h2 {color:#003366; margin-top:40px;}
-        table {width:100%; border-collapse:collapse; margin-bottom:30px;}
-        th, td {border:1px solid #ddd; padding:8px; text-align:center;}
-        th {background:#003366; color:#fff;}
-        tr:nth-child(even){background:#e9f2fb;}
-        .badge {display:inline-block; padding:4px 8px; border-radius:4px; font-size:0.9em;}
-        .good {background:#c8e6c9; color:#256029;}
-        .regular {background:#fff9c4; color:#827717;}
-        .bad {background:#ffcdd2; color:#c62828;}
-        .note {font-size:0.9em; color:#555; margin-top:5px;}
-        .corr {margin-top:10px; font-size:0.95em; color:#333;}
-        .corr span {display:block; margin-bottom:4px;}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+        .month-selector {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .month-selector label {
+            font-size: 1.1em;
+            margin-right: 15px;
+            color: #555;
+            font-weight: 500;
+        }
+        .month-selector select {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+            background-color: #fdfdfd;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        .month-selector select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .indicator-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        .indicator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .indicator-card h3 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #34495e;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        .indicator-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .indicator-classification {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .indicator-interpretation {
+            font-size: 0.85em;
+            color: #888;
+            line-height: 1.4;
+            min-height: 40px; /* Para manter o layout consistente */
+        }
+        .donut-chart-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+        }
+        .donut-chart {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--color-part1) 0% var(--angle-part1),
+                var(--color-part2) var(--angle-part1) var(--angle-part2),
+                #e0e0e0 var(--angle-part2) 100%
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+        }
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #555;
+        }
+        .chart-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #333;
+            z-index: 2;
+        }
+        .chart-inner-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%; /* Tamanho do buraco do donut */
+            height: 70%;
+            background-color: #fff;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .category-title {
+            grid-column: 1 / -1;
+            text-align: left;
+            font-size: 1.6em;
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        .alert-message {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffe0b2; /* Light orange */
+            border-left: 5px solid #ff9800; /* Orange */
+            margin-top: 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            color: #333;
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Dashboard de Indicadores Financeiros</h1>
 
-<header>
-    <h1>Dashboard de Indicadores Financeiros – Spader C IND</h1>
-    <p>Visão mensal com conceitos e correlações entre indicadores</p>
-</header>
+        <div class="month-selector">
+            <label for="monthSelect">Selecione o Mês:</label>
+            <select id="monthSelect">
+                <option value="Jan">Janeiro</option>
+                <option value="Jun">Junho</option>
+                <option value="Jul">Julho</option>
+                <option value="Ago">Agosto</option>
+                <!-- Outros meses seriam adicionados aqui dinamicamente -->
+            </select>
+        </div>
 
-<div class="container">
-
-    <!-- 1️⃣ Liquidez -->
-    <h2>Liquidez</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Indicador</th>
-                <th>Fórmula</th>
-                <th>Valor Atual</th>
-                <th>Classificação</th>
-                <th>Interpretação</th>
-                <th>Meta / Benchmark</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Liquidez Corrente</td>
-                <td>Ativo Circulante / Passivo Circulante</td>
-                <td>1.63</td>
-                <td><span class="badge good">Boa</span></td>
-                <td class="note">Capacidade de pagamento das obrigações de curto prazo</td>
-                <td>≥ 1,5</td>
-            </tr>
-            <tr>
-                <td>Liquidez Seca</td>
-                <td>(Ativo Circulante - Estoques) / Passivo Circulante</td>
-                <td>1.63</td>
-                <td><span class="badge good">Boa</span></td>
-                <td class="note">Capacidade de pagamento sem depender de estoques</td>
-                <td>≥ 1,0</td>
-            </tr>
-            <tr>
-                <td>Liquidez Geral</td>
-                <td>Ativo Total / Passivo Total</td>
-                <td>0.99</td>
-                <td><span class="badge regular">Regular</span></td>
-                <td class="note">Capacidade geral de pagamento das obrigações</td>
-                <td>≥ 1,2</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- 2️⃣ Endividamento -->
-    <h2>Endividamento</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Indicador</th>
-                <th>Fórmula</th>
-                <th>Valor Atual</th>
-                <th>Classificação</th>
-                <th>Interpretação</th>
-                <th>Meta / Benchmark</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Endividamento Geral</td>
-                <td>Passivo Total / Ativo Total</td>
-                <td>1.01</td>
-                <td><span class="badge bad">Ruim</span></td>
-                <td class="note">Proporção de recursos de terceiros no financiamento</td>
-                <td>≤ 50 %</td>
-            </tr>
-            <tr>
-                <td>Endividamento Curto Prazo</td>
-                <td>Passivo Circulante / Ativo Total</td>
-                <td>0.56</td>
-                <td><span class="badge bad">Ruim</span></td>
-                <td class="note">Proporção de dívidas de curto prazo</td>
-                <td>≤ 20 %</td>
-            </tr>
-            <tr>
-                <td>Composição do Endividamento</td>
-                <td>Passivo Circulante / Passivo Total</td>
-                <td>0.56</td>
-                <td><span class="badge bad">Ruim</span></td>
-                <td class="note">Concentração das dívidas no curto prazo</td>
-                <td>≤ 40 %</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- 3️⃣ Rentabilidade -->
-    <h2>Rentabilidade</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Indicador</th>
-                <th>Fórmula</th>
-                <th>Valor Atual</th>
-                <th>Classificação</th>
-                <th>Interpretação</th>
-                <th>Meta / Benchmark</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Margem Líquida</td>
-                <td>(Lucro Líquido / Receita Total) × 100</td>
-                <td>88.82 %</td>
-                <td><span class="badge good">Boa</span></td>
-                <td class="note">Percentual de lucro sobre as vendas</td>
-                <td>≥ 10 %</td>
-            </tr>
-            <tr>
-                <td>ROA – Retorno sobre Ativo</td>
-                <td>(Lucro Líquido / Ativo Total) × 100</td>
-                <td>291.89 %</td>
-                <td><span class="badge good">Boa</span></td>
-                <td class="note">Eficiência na utilização dos ativos</td>
-                <td>≥ 15 %</td>
-            </tr>
-            <tr>
-                <td>ROE – Retorno sobre PL</td>
-                <td>(Lucro Líquido / Patrimônio Líquido) × 100</td>
-                <td>-28 374,04 %</td>
-                <td><span class="badge bad">Ruim</span></td>
-                <td class="note">Retorno sobre o investimento dos sócios</td>
-                <td>≥ 20 %</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- 4️⃣ Estrutura -->
-    <h2>Estrutura de Capital</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Indicador</th>
-                <th>Fórmula</th>
-                <th>Valor Atual</th>
-                <th>Classificação</th>
-                <th>Interpretação</th>
-                <th>Meta / Benchmark</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Imobilização do PL</td>
-                <td>(Ativo Não Circulante / Patrimônio Líquido) × 100</td>
-                <td>-814.29 %</td>
-                <td><span class="badge bad">Ruim</span></td>
-                <td class="note">Percentual do PL aplicado no ativo permanente</td>
-                <td>≤ 60 %</td>
-            </tr>
-            <tr>
-                <td>Participação Capital Terceiros</td>
-                <td>(Passivo Total / Patrimônio Líquido) × 100</td>
-                <td>-9 820,04 %</td>
-                <td><span class="badge bad">Ruim</span></td>
-                <td class="note">Dependência de capital de terceiros</td>
-                <td>≤ 70 %</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- 5️⃣ Correlações e Insights -->
-    <h2>Correlação entre Indicadores & Insights Estratégicos</h2>
-
-    <div class="corr">
-        <span>🔎 <strong>Liquidez vs. Endividamento</strong> – A boa liquidez corrente (1.63) indica que a empresa tem caixa suficiente para honrar dívidas de curto prazo, porém o <em>Endividamento Geral</em> acima de 1 (100 %) mostra que a estrutura de capital está muito dependente de terceiros. <strong>Melhorar a liquidez geral</strong> (aumentar ativos ou reduzir passivos) reduzirá o risco de solvência.</span>
-
-        <span>🔎 <strong>Rentabilidade vs. Estrutura</strong> – Apesar da margem líquida e ROA extremamente altas, o ROE negativo evidencia que o patrimônio líquido está quase nulo (≈ 2,8 mi contra dívida total de 22,7 mi). Cada aumento de lucro está “diluindo” o PL, gerando um retorno negativo para os sócios. <strong>Reforçar o capital próprio</strong> (emissão de ações ou aporte) é essencial para transformar a alta rentabilidade operacional em valor para acionistas.</span>
-
-        <span>🔎 <strong>Endividamento Curto Prazo vs. Liquidez Seca</strong> – O índice de 0.56 (56 %) de dívida de curto prazo é alto, mas a Liquidez Seca (1.63) ainda cobre as obrigações sem contar estoques. Caso a empresa reduza o passivo circulante, a Liquidez Seca aumentará ainda mais, diminuindo a vulnerabilidade a choques de caixa.</span>
-
-        <span>🔎 <strong>Imobilização do PL</strong> – O valor negativo indica que o cálculo está invertido (PL negativo). Isso ocorre porque o Patrimônio Líquido está negativo, refletindo prejuízos acumulados. Regularizar o PL (por exemplo, com capitalização) trará indicadores mais realistas e permitirá investimentos em ativos fixos sem comprometer a saúde financeira.</span>
-
-        <span>🔎 <strong>Recomendação de Ações Prioritárias</strong>:
-            <ul>
-                <li>1️⃣ <strong>Captação de capital próprio</strong> – aporte dos sócios ou emissão de novas ações para melhorar o PL.</li>
-                <li>2️⃣ <strong>Renegociação de dívidas de curto prazo</strong> – alongar prazos ou trocar parte da dívida por linhas de crédito de longo prazo.</li>
-                <li>3️⃣ <strong>Gestão de estoques</strong> – reduzir o estoque ocioso para liberar caixa e melhorar ainda mais a Liquidez Seca.</li>
-                <li>4️⃣ <strong>Revisão de custos operacionais</strong> – analisar a alta margem de lucro e identificar oportunidades de reinvestimento que aumentem o valor para acionistas.</li>
-            </ul>
-        </span>
+        <div id="dashboardContent" class="dashboard-grid">
+            <!-- Conteúdo do dashboard será carregado aqui pelo JavaScript -->
+            <div class="alert-message">
+                Selecione um mês para visualizar os indicadores.
+            </div>
+        </div>
     </div>
 
-</div>
+    <script>
+        // Dados dos indicadores para cada mês
+        // Estes dados seriam idealmente carregados de uma API ou de um arquivo JSON/CSV
+        // Para este exemplo, estou embutindo os dados que você forneceu.
+        const allMonthsData = {
+            "Jan": {
+                "Liquidez": [
+                    {
+                        "Indicador": "Líq. Geral",
+                        "ValorAtual": 0.93,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Capacidade geral de pagamento das obrigações.",
+                        "Meta": 1.25,
+                        "DonutPart1": 18.6,
+                        "DonutPart2": 81.4,
+                        "ColorPart1": "#007bff",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Líq. Corrente",
+                        "ValorAtual": 1.37,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Capacidade de pagamento das obrigações de curto prazo.",
+                        "Meta": 1.5,
+                        "DonutPart1": 27.4,
+                        "DonutPart2": 72.6,
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Líq. Seca",
+                        "ValorAtual": 0.73,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Capacidade de pagamento sem depender de estoques.",
+                        "Meta": 1.0,
+                        "DonutPart1": 14.6,
+                        "DonutPart2": 85.4,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Líq. Imediata",
+                        "ValorAtual": 0.279,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Capacidade de pagamento com recursos imediatos.",
+                        "Meta": 0.5,
+                        "DonutPart1": 5.58,
+                        "DonutPart2": 94.42,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Lucratividade": [
+                    {
+                        "Indicador": "Margem Bruta",
+                        "ValorAtual": 0.796,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Percentual de lucro sobre as vendas após o custo dos produtos.",
+                        "Meta": 0.8364,
+                        "DonutPart1": 95.17,
+                        "DonutPart2": 4.83,
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Margem Operacional",
+                        "ValorAtual": 0.396,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Percentual de lucro sobre as vendas após custos e despesas operacionais.",
+                        "Meta": 0.6121,
+                        "DonutPart1": 64.7,
+                        "DonutPart2": 35.3,
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "EBITDA",
+                        "ValorAtual": 0.042,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Lucro antes de juros, impostos, depreciação e amortização.",
+                        "Meta": 0.15,
+                        "DonutPart1": 56.8,
+                        "DonutPart2": 43.2,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Margem Líquida",
+                        "ValorAtual": 0.026,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Percentual de lucro líquido sobre as vendas.",
+                        "Meta": 0.2,
+                        "DonutPart1": 42,
+                        "DonutPart2": 58,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Rentabilidade": [
+                    {
+                        "Indicador": "ROE",
+                        "ValorAtual": 11.077,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Retorno sobre o investimento dos sócios.",
+                        "Meta": 20,
+                        "DonutPart1": 77.69,
+                        "DonutPart2": 22.31,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "ROA",
+                        "ValorAtual": 1.053,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Eficiência na utilização dos ativos.",
+                        "Meta": 1.25,
+                        "DonutPart1": 85.1,
+                        "DonutPart2": 14.9,
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Endividamento": [
+                    {
+                        "Indicador": "Imob. Cap. Próprio",
+                        "ValorAtual": 0.44,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Percentual do PL aplicado no ativo permanente.",
+                        "Meta": 1,
+                        "DonutPart1": 44,
+                        "DonutPart2": 56,
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Endividamento Geral",
+                        "ValorAtual": 0.984,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Proporção de recursos de terceiros no financiamento.",
+                        "Meta": 1.05,
+                        "DonutPart1": 93.71,
+                        "DonutPart2": 6.29,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Part. Cap. Terceiros",
+                        "ValorAtual": 1.079,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Dependência de capital de terceiros.",
+                        "Meta": 1.25,
+                        "DonutPart1": 86.32,
+                        "DonutPart2": 13.68,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Composição da Dívida",
+                        "ValorAtual": 0.65,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Concentração das dívidas no curto prazo.",
+                        "Meta": 1,
+                        "DonutPart1": 65,
+                        "DonutPart2": 35,
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Atividade": [
+                    {
+                        "Indicador": "PME",
+                        "ValorAtual": 40.64,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Prazo médio de estocagem.",
+                        "Meta": 90,
+                        "DonutPart1": 45.16,
+                        "DonutPart2": 54.84,
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "PMPC",
+                        "ValorAtual": 55.85,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Prazo médio de pagamento a fornecedores.",
+                        "Meta": 65,
+                        "DonutPart1": 85.92,
+                        "DonutPart2": 14.08,
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "PMC",
+                        "ValorAtual": 12.11,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Prazo médio de recebimento de vendas.",
+                        "Meta": 30,
+                        "DonutPart1": 40.37,
+                        "DonutPart2": 59.63,
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Ciclo Financeiro",
+                        "ValorAtual": -3.11,
+                        "Classificacao": "Bom",
+                        "Interpretação": "Tempo entre o pagamento a fornecedores e o recebimento de vendas.",
+                        "Meta": 90,
+                        "DonutPart1": 103.46, /* Representa o valor, mas o cálculo do ângulo precisa ser ajustado para valores negativos */
+                        "DonutPart2": -3.46,
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Ciclo Operacional",
+                        "ValorAtual": 52.74,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Tempo total desde a compra de estoque até o recebimento das vendas.",
+                        "Meta": 80,
+                        "DonutPart1": 65.93,
+                        "DonutPart2": 34.08,
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Giro do Ativo (GA)",
+                        "ValorAtual": 0.41,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Eficiência na geração de vendas a partir dos ativos.",
+                        "Meta": 2.5,
+                        "DonutPart1": 16.4,
+                        "DonutPart2": 83.6,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Giro de Caixa",
+                        "ValorAtual": -115.84,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Número de vezes que o caixa gira no período.",
+                        "Meta": 80,
+                        "DonutPart1": 244.8, /* Representa o valor, mas o cálculo do ângulo precisa ser ajustado para valores negativos */
+                        "DonutPart2": -144.8,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Saldo de Tesouraria ST",
+                        "ValorAtual": 347.02,
+                        "Classificacao": "Bom",
+                        "Interpretação": "Saldo disponível em caixa e equivalentes.",
+                        "Meta": 500,
+                        "DonutPart1": 69.4,
+                        "DonutPart2": 30.6,
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ]
+            },
+            "Jun": {
+                "Liquidez": [
+                    {
+                        "Indicador": "Liquidez Corrente",
+                        "ValorAtual": 1.63,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Capacidade de pagamento das obrigações de curto prazo.",
+                        "Meta": 1.5,
+                        "DonutPart1": (1.63 / 1.5) * 100 > 100 ? 100 : (1.63 / 1.5) * 100,
+                        "DonutPart2": 100 - ((1.63 / 1.5) * 100 > 100 ? 100 : (1.63 / 1.5) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Liquidez Seca",
+                        "ValorAtual": 1.63,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Capacidade de pagamento sem depender de estoques.",
+                        "Meta": 1.0,
+                        "DonutPart1": (1.63 / 1.0) * 100 > 100 ? 100 : (1.63 / 1.0) * 100,
+                        "DonutPart2": 100 - ((1.63 / 1.0) * 100 > 100 ? 100 : (1.63 / 1.0) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Liquidez Geral",
+                        "ValorAtual": 0.99,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Capacidade geral de pagamento das obrigações.",
+                        "Meta": 1.2,
+                        "DonutPart1": (0.99 / 1.2) * 100,
+                        "DonutPart2": 100 - ((0.99 / 1.2) * 100),
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Endividamento": [
+                    {
+                        "Indicador": "Endividamento Geral",
+                        "ValorAtual": 1.01,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Proporção de recursos de terceiros no financiamento.",
+                        "Meta": 0.5,
+                        "DonutPart1": (0.5 / 1.01) * 100, /* Invertido para mostrar o quanto falta para a meta */
+                        "DonutPart2": 100 - ((0.5 / 1.01) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Endividamento Curto Prazo",
+                        "ValorAtual": 0.56,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Proporção de dívidas de curto prazo.",
+                        "Meta": 0.2,
+                        "DonutPart1": (0.2 / 0.56) * 100,
+                        "DonutPart2": 100 - ((0.2 / 0.56) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Composição do Endividamento",
+                        "ValorAtual": 0.56,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Concentração das dívidas no curto prazo.",
+                        "Meta": 0.4,
+                        "DonutPart1": (0.4 / 0.56) * 100,
+                        "DonutPart2": 100 - ((0.4 / 0.56) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Rentabilidade": [
+                    {
+                        "Indicador": "Margem Líquida",
+                        "ValorAtual": 88.82,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Percentual de lucro sobre as vendas.",
+                        "Meta": 10,
+                        "DonutPart1": (88.82 / 10) * 100 > 100 ? 100 : (88.82 / 10) * 100,
+                        "DonutPart2": 100 - ((88.82 / 10) * 100 > 100 ? 100 : (88.82 / 10) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "ROA - Retorno sobre Ativo",
+                        "ValorAtual": 291.89,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Eficiência na utilização dos ativos.",
+                        "Meta": 15,
+                        "DonutPart1": (291.89 / 15) * 100 > 100 ? 100 : (291.89 / 15) * 100,
+                        "DonutPart2": 100 - ((291.89 / 15) * 100 > 100 ? 100 : (291.89 / 15) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "ROE - Retorno sobre PL",
+                        "ValorAtual": -28374.04,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Retorno sobre o investimento dos sócios.",
+                        "Meta": 20,
+                        "DonutPart1": 0, /* Valor negativo, não representa bem em donut simples */
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Estrutura de Capital": [
+                    {
+                        "Indicador": "Imobilização do PL",
+                        "ValorAtual": -814.29,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Percentual do PL aplicado no ativo permanente.",
+                        "Meta": 60,
+                        "DonutPart1": 0,
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Participação Capital Terceiros",
+                        "ValorAtual": -9820.04,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Dependência de capital de terceiros.",
+                        "Meta": 70,
+                        "DonutPart1": 0,
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ]
+            },
+            "Jul": {
+                "Liquidez": [
+                    {
+                        "Indicador": "Liquidez Corrente",
+                        "ValorAtual": 1.63, /* Usando o mesmo valor de Junho para exemplo, ajustar se houver dados específicos de Julho */
+                        "Classificacao": "Boa",
+                        "Interpretação": "Capacidade de pagamento das obrigações de curto prazo.",
+                        "Meta": 1.5,
+                        "DonutPart1": (1.63 / 1.5) * 100 > 100 ? 100 : (1.63 / 1.5) * 100,
+                        "DonutPart2": 100 - ((1.63 / 1.5) * 100 > 100 ? 100 : (1.63 / 1.5) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Liquidez Seca",
+                        "ValorAtual": 1.63,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Capacidade de pagamento sem depender de estoques.",
+                        "Meta": 1.0,
+                        "DonutPart1": (1.63 / 1.0) * 100 > 100 ? 100 : (1.63 / 1.0) * 100,
+                        "DonutPart2": 100 - ((1.63 / 1.0) * 100 > 100 ? 100 : (1.63 / 1.0) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Liquidez Geral",
+                        "ValorAtual": 0.99,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Capacidade geral de pagamento das obrigações.",
+                        "Meta": 1.2,
+                        "DonutPart1": (0.99 / 1.2) * 100,
+                        "DonutPart2": 100 - ((0.99 / 1.2) * 100),
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Endividamento": [
+                    {
+                        "Indicador": "Endividamento Geral",
+                        "ValorAtual": 1.01,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Proporção de recursos de terceiros no financiamento.",
+                        "Meta": 0.5,
+                        "DonutPart1": (0.5 / 1.01) * 100,
+                        "DonutPart2": 100 - ((0.5 / 1.01) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Endividamento Curto Prazo",
+                        "ValorAtual": 0.56,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Proporção de dívidas de curto prazo.",
+                        "Meta": 0.2,
+                        "DonutPart1": (0.2 / 0.56) * 100,
+                        "DonutPart2": 100 - ((0.2 / 0.56) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Composição do Endividamento",
+                        "ValorAtual": 0.56,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Concentração das dívidas no curto prazo.",
+                        "Meta": 0.4,
+                        "DonutPart1": (0.4 / 0.56) * 100,
+                        "DonutPart2": 100 - ((0.4 / 0.56) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Rentabilidade": [
+                    {
+                        "Indicador": "Margem Líquida",
+                        "ValorAtual": 88.82,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Percentual de lucro sobre as vendas.",
+                        "Meta": 10,
+                        "DonutPart1": (88.82 / 10) * 100 > 100 ? 100 : (88.82 / 10) * 100,
+                        "DonutPart2": 100 - ((88.82 / 10) * 100 > 100 ? 100 : (88.82 / 10) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "ROA - Retorno sobre Ativo",
+                        "ValorAtual": 291.89,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Eficiência na utilização dos ativos.",
+                        "Meta": 15,
+                        "DonutPart1": (291.89 / 15) * 100 > 100 ? 100 : (291.89 / 15) * 100,
+                        "DonutPart2": 100 - ((291.89 / 15) * 100 > 100 ? 100 : (291.89 / 15) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "ROE - Retorno sobre PL",
+                        "ValorAtual": -28374.04,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Retorno sobre o investimento dos sócios.",
+                        "Meta": 20,
+                        "DonutPart1": 0,
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Estrutura de Capital": [
+                    {
+                        "Indicador": "Imobilização do PL",
+                        "ValorAtual": -814.29,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Percentual do PL aplicado no ativo permanente.",
+                        "Meta": 60,
+                        "DonutPart1": 0,
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Participação Capital Terceiros",
+                        "ValorAtual": -9820.04,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Dependência de capital de terceiros.",
+                        "Meta": 70,
+                        "DonutPart1": 0,
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ]
+            },
+            "Ago": {
+                "Liquidez": [
+                    {
+                        "Indicador": "Liquidez Corrente",
+                        "ValorAtual": 1.63, /* Usando o mesmo valor de Junho para exemplo, ajustar se houver dados específicos de Agosto */
+                        "Classificacao": "Boa",
+                        "Interpretação": "Capacidade de pagamento das obrigações de curto prazo.",
+                        "Meta": 1.5,
+                        "DonutPart1": (1.63 / 1.5) * 100 > 100 ? 100 : (1.63 / 1.5) * 100,
+                        "DonutPart2": 100 - ((1.63 / 1.5) * 100 > 100 ? 100 : (1.63 / 1.5) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Liquidez Seca",
+                        "ValorAtual": 1.63,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Capacidade de pagamento sem depender de estoques.",
+                        "Meta": 1.0,
+                        "DonutPart1": (1.63 / 1.0) * 100 > 100 ? 100 : (1.63 / 1.0) * 100,
+                        "DonutPart2": 100 - ((1.63 / 1.0) * 100 > 100 ? 100 : (1.63 / 1.0) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Liquidez Geral",
+                        "ValorAtual": 0.99,
+                        "Classificacao": "Regular",
+                        "Interpretação": "Capacidade geral de pagamento das obrigações.",
+                        "Meta": 1.2,
+                        "DonutPart1": (0.99 / 1.2) * 100,
+                        "DonutPart2": 100 - ((0.99 / 1.2) * 100),
+                        "ColorPart1": "#ffc107",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Endividamento": [
+                    {
+                        "Indicador": "Endividamento Geral",
+                        "ValorAtual": 1.01,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Proporção de recursos de terceiros no financiamento.",
+                        "Meta": 0.5,
+                        "DonutPart1": (0.5 / 1.01) * 100,
+                        "DonutPart2": 100 - ((0.5 / 1.01) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Endividamento Curto Prazo",
+                        "ValorAtual": 0.56,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Proporção de dívidas de curto prazo.",
+                        "Meta": 0.2,
+                        "DonutPart1": (0.2 / 0.56) * 100,
+                        "DonutPart2": 100 - ((0.2 / 0.56) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Composição do Endividamento",
+                        "ValorAtual": 0.56,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Concentração das dívidas no curto prazo.",
+                        "Meta": 0.4,
+                        "DonutPart1": (0.4 / 0.56) * 100,
+                        "DonutPart2": 100 - ((0.4 / 0.56) * 100),
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Rentabilidade": [
+                    {
+                        "Indicador": "Margem Líquida",
+                        "ValorAtual": 88.82,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Percentual de lucro sobre as vendas.",
+                        "Meta": 10,
+                        "DonutPart1": (88.82 / 10) * 100 > 100 ? 100 : (88.82 / 10) * 100,
+                        "DonutPart2": 100 - ((88.82 / 10) * 100 > 100 ? 100 : (88.82 / 10) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "ROA - Retorno sobre Ativo",
+                        "ValorAtual": 291.89,
+                        "Classificacao": "Boa",
+                        "Interpretação": "Eficiência na utilização dos ativos.",
+                        "Meta": 15,
+                        "DonutPart1": (291.89 / 15) * 100 > 100 ? 100 : (291.89 / 15) * 100,
+                        "DonutPart2": 100 - ((291.89 / 15) * 100 > 100 ? 100 : (291.89 / 15) * 100),
+                        "ColorPart1": "#28a745",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "ROE - Retorno sobre PL",
+                        "ValorAtual": -28374.04,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Retorno sobre o investimento dos sócios.",
+                        "Meta": 20,
+                        "DonutPart1": 0,
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ],
+                "Estrutura de Capital": [
+                    {
+                        "Indicador": "Imobilização do PL",
+                        "ValorAtual": -814.29,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Percentual do PL aplicado no ativo permanente.",
+                        "Meta": 60,
+                        "DonutPart1": 0,
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    },
+                    {
+                        "Indicador": "Participação Capital Terceiros",
+                        "ValorAtual": -9820.04,
+                        "Classificacao": "Ruim",
+                        "Interpretação": "Dependência de capital de terceiros.",
+                        "Meta": 70,
+                        "DonutPart1": 0,
+                        "DonutPart2": 100,
+                        "ColorPart1": "#dc3545",
+                        "ColorPart2": "#e0e0e0"
+                    }
+                ]
+            }
+        };
 
+        function createDonutChart(part1, part2, color1, color2, label) {
+            const angle1 = (part1 / (part1 + part2)) * 360;
+            const angle2 = (part2 / (part1 + part2)) * 360;
+
+            return `
+                <div class="donut-chart-container">
+                    <div class="donut-chart" style="
+                        --color-part1: ${color1};
+                        --color-part2: ${color2};
+                        --angle-part1: ${angle1}deg;
+                        --angle-part2: ${angle1 + angle2}deg;
+                    ">
+                        <div class="donut-center">${label}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDashboard(month) {
+            const dashboardContent = document.getElementById('dashboardContent');
+            dashboardContent.innerHTML = ''; // Limpa o conteúdo existente
+
+            const monthData = allMonthsData[month];
+
+            if (!monthData) {
+                dashboardContent.innerHTML = '<div class="alert-message">Dados não disponíveis para o mês selecionado.</div>';
+                return;
+            }
+
+            for (const category in monthData) {
+                if (monthData.hasOwnProperty(category)) {
+                    const categoryTitle = document.createElement('h2');
+                    categoryTitle.className = 'category-title';
+                    categoryTitle.textContent = category;
+                    dashboardContent.appendChild(categoryTitle);
+
+                    monthData[category].forEach(indicator => {
+                        const card = document.createElement('div');
+                        card.className = 'indicator-card';
+
+                        // Formatação do valor para percentual se for o caso
+                        let formattedValue = indicator.ValorAtual;
+                        if (indicator.Indicador.includes('Margem') || indicator.Indicador.includes('ROE') || indicator.Indicador.includes('ROA') || indicator.Indicador.includes('Imobilização') || indicator.Indicador.includes('Participação')) {
+                            formattedValue = `${indicator.ValorAtual.toFixed(2)}%`;
+                        } else if (indicator.Indicador.includes('Ciclo')) {
+                            formattedValue = `${indicator.ValorAtual.toFixed(0)} dias`;
+                        } else {
+                            formattedValue = indicator.ValorAtual.toFixed(2);
+                        }
+
+                        // Ajuste para valores negativos no donut, se necessário
+                        let donutPart1 = indicator.DonutPart1;
+                        let donutPart2 = indicator.DonutPart2;
+                        let donutLabel = formattedValue;
+
+                        if (indicator.ValorAtual < 0) {
+                            // Para valores negativos, podemos mostrar 0% preenchido e o valor negativo no centro
+                            donutPart1 = 0;
+                            donutPart2 = 100;
+                            donutLabel = formattedValue; // Mantém o valor negativo no centro
+                        } else if (indicator.ValorAtual > indicator.Meta && indicator.Indicador.includes('Endividamento')) {
+                            // Para endividamento, se o valor atual for maior que a meta, a meta é o que queremos atingir
+                            donutPart1 = (indicator.Meta / indicator.ValorAtual) * 100;
+                            donutPart2 = 100 - donutPart1;
+                            donutLabel = formattedValue;
+                        } else if (indicator.ValorAtual > indicator.Meta && !indicator.Indicador.includes('Endividamento')) {
+                            // Para outros indicadores, se o valor atual for maior que a meta, mostramos 100% preenchido
+                            donutPart1 = 100;
+                            donutPart2 = 0;
+                            donutLabel = formattedValue;
+                        } else if (indicator.Meta !== 0) {
+                            donutPart1 = (indicator.ValorAtual / indicator.Meta) * 100;
+                            donutPart2 = 100 - donutPart1;
+                            donutLabel = formattedValue;
+                        } else {
+                            donutPart1 = 0;
+                            donutPart2 = 100;
+                            donutLabel = formattedValue;
+                        }
+
+                        // Garante que as partes do donut não sejam negativas ou maiores que 100
+                        donutPart1 = Math.max(0, Math.min(100, donutPart1));
+                        donutPart2 = Math.max(0, Math.min(100, donutPart2));
+
+
+                        card.innerHTML = `
+                            ${createDonutChart(donutPart1, donutPart2, indicator.ColorPart1, indicator.ColorPart2, donutLabel)}
+                            <h3>${indicator.Indicador}</h3>
+                            <div class="indicator-value">${formattedValue}</div>
+                            <div class="indicator-classification">Classificação: <strong>${indicator.Classificacao}</strong></div>
+                            <div class="indicator-interpretation">${indicator.Interpretação}</div>
+                            <div class="indicator-interpretation">Meta: ${indicator.Meta}</div>
+                        `;
+                        dashboardContent.appendChild(card);
+                    });
+                }
+            }
+        }
+
+        // Event Listener para o seletor de mês
+        document.getElementById('monthSelect').addEventListener('change', function() {
+            renderDashboard(this.value);
+        });
+
+        // Renderiza o dashboard com o mês de Janeiro por padrão ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('monthSelect').value = 'Jan'; // Define Janeiro como padrão
+            renderDashboard('Jan');
+        });
+    </script>
 </body>
 </html>
